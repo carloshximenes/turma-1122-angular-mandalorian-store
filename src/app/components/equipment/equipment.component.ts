@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EquipmentType } from 'src/app/types/equipment.type';
 
 @Component({
@@ -8,4 +8,9 @@ import { EquipmentType } from 'src/app/types/equipment.type';
 })
 export class EquipmentComponent {
   @Input() equipamento!: EquipmentType;
+  @Output() verDetalhes = new EventEmitter<string>();
+
+  public clickHandler() {
+    this.verDetalhes.emit(this.equipamento.id);
+  }
 }

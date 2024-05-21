@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EquipmentType } from 'src/app/types/equipment.type';
 
 @Component({
@@ -8,4 +8,9 @@ import { EquipmentType } from 'src/app/types/equipment.type';
 })
 export class EquipmentListComponent {
   @Input() listaEquipamentos: EquipmentType[] = [];
+  @Output() verDetalhesEquipamento = new EventEmitter<string>();
+
+  public verDetalhes(id: string) {
+    this.verDetalhesEquipamento.emit(id);
+  }
 }

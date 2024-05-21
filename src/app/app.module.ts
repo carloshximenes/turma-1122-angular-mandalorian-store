@@ -3,30 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { FilterComponent } from './components/filter/filter.component';
-import { EquipmentComponent } from './components/equipment/equipment.component';
-import { EquipmentListComponent } from './components/equipment-list/equipment-list.component';
-import { FormsModule } from '@angular/forms';
+import { ComponentsModule } from './components/components.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    FilterComponent,
-    EquipmentComponent,
-    EquipmentListComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, ComponentsModule, HomeModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

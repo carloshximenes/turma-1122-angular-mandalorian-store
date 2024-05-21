@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { EquipmentListMock } from 'src/app/mocks/equipment-list.mock';
 import { EquipmentType } from 'src/app/types/equipment.type';
-
+import { HomeService } from './home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,15 +9,17 @@ import { EquipmentType } from 'src/app/types/equipment.type';
 export class HomeComponent {
   public listaEquipamentos: EquipmentType[] = [];
 
-  constructor() {
-    this.listaEquipamentos = EquipmentListMock;
+  constructor(private _homeService: HomeService) {
+    this.filtrarEquipamentosPorNome();
   }
 
-  public filtrarEquipamentosPorNome(nome: string) {
-    if(nome.length === 0) {
-      this.listaEquipamentos = EquipmentListMock;
-      return;
-    }
-    this.listaEquipamentos = EquipmentListMock.filter(equip => equip.name.toLowerCase().includes(nome.toLowerCase()));
+  public filtrarEquipamentosPorNome(nome: string = '') {
+    this._homeService
+      .getListaEquipamento(nome)
+      .subscribe((resp) => (this.listaEquipamentos = resp));
+  }
+
+  public getDetalhesEquipamento(id: string) {
+    this._homeService.getEquipamento(id).subscribe((resp) => console.log(resp));
   }
 }
