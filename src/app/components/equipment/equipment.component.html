@@ -1,5 +1,14 @@
 <div class="Equipment">
-    <span>{{equipamento.name}}</span>
-    <span>{{equipamento.price}}</span>
-    <button (click)="clickHandler()">DETALHES</button>
+  <img
+    class="Equipment__image"
+    [src]="equipamento.image"
+    [alt]="equipamento.name"
+  />
+  <span class="Equipamento__isAvailable">
+    {{ equipamento.isAvailable ? "Disponível" : "Indisponível" }}
+  </span>
+  <span class="Equipment__name">{{ equipamento.name }}</span>
+  <span class="Equipment__rating">{{ equipamento.rating }}</span>
+  <span class="Equipment__price">{{ equipamento.price }}</span>
+  <button (click)="clickHandler()">DETALHES</button>
 </div>

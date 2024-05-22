@@ -1,5 +1,15 @@
 .Equipment {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 8px;
+  width: 150px;
+  align-items: center;
+  background: white;
+  color: black;
+  border-radius: 4px;
+  padding: 2px;
+  &__image {
+    width: 100px;
+    height: 100px;
+  }
 }
