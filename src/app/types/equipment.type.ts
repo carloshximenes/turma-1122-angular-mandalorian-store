@@ -6,4 +6,5 @@ export type EquipmentType = {
   price: number;
   isAvailable: boolean;
   rating: number;
+  isFavorite?: boolean;
 };

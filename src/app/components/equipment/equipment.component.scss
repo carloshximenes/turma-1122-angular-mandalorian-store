@@ -1,15 +1,50 @@
-.Equipment {
+::ng-deep .Equipamento {
+  width: 600px;
+  height: 150px;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 150px;
-  align-items: center;
-  background: white;
-  color: black;
-  border-radius: 4px;
-  padding: 2px;
+  flex-direction: row;
+  .p-card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .p-card-header {
+    display: flex;
+    position: relative;
+  }
+  .p-card-title {
+    margin: 0;
+  }
+  .p-card-content {
+    padding: 0;
+  }
+  .p-rating-item {
+    width: 12px;
+  }
+  .p-card-footer {
+    margin-top: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__tag {
+    position: absolute;
+    bottom: 1rem;
+    right: 0;
+    .p-chip-text {
+      font-size: 12px;
+      margin: 0.2rem 0;
+    }
+  }
   &__image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+  }
+  &__price {
+    font-size: 32px;
   }
 }

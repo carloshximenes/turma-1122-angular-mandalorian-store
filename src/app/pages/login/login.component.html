@@ -1,0 +1,32 @@
+<div class="Login">
+  <div class="Login__field">
+    <label htmlFor="username">Usuário</label>
+    <input
+      pInputText
+      id="username"
+      type="email"
+      aria-describedby="username-help"
+      class="p-inputtext-sm"
+      [(ngModel)]="username"
+    />
+    <small id="username-help">Informe seu e-mail de cadastro</small>
+  </div>
+  <div class="Login__field">
+    <label htmlFor="password">Senha</label>
+    <input
+      pInputText
+      id="password"
+      type="password"
+      aria-describedby="password-help"
+      class="p-inputtext-sm"
+      [(ngModel)]="password"
+    />
+    <small id="password-help">Informe sua senha</small>
+  </div>
+  <p-button
+    class="Login__submit"
+    label="Login"
+    type="button"
+    (click)="loginHandler()"
+  ></p-button>
+</div>

@@ -3,21 +3,36 @@
     type="text"
     [(ngModel)]="filtro"
     placeholder="Informe o nome do equipamento desejado"
+    class="p-inputtext-sm Filter__equipment"
+    pInputText
   />
 
-  <select [(ngModel)]="isAvailable">
-    <option value="">Todos</option>
-    <option value="true">Disponível</option>
-    <option value="false">Indisponível</option>
-  </select>
+  <p-dropdown
+    [options]="availableOptions"
+    [(ngModel)]="isAvailable"
+    [showClear]="true"
+    placeholder="Situação Estoque"
+    class="p-inputtext-sm Filter__isAvailable"
+  ></p-dropdown>
 
-  <select [(ngModel)]="sortOrder">
-    <option value="ASC">ASC</option>
-    <option value="DESC">DESC</option>
-  </select>
+  <p-dropdown
+    [options]="sortOptions"
+    [(ngModel)]="sortOrder"
+    [showClear]="true"
+    placeholder="Ordenar por"
+    class="p-inputtext-sm Filter__sortOrder"
+  ></p-dropdown>
 
   <div class="Filter__actions">
-    <button type="button" (click)="buscarEquipamentoPorNome()">Buscar</button>
-    <button type="button" (click)="limparFiltro()">Limpar</button>
+    <p-button type="button" size="small" (click)="buscarEquipamentoPorNome()"
+      >Buscar</p-button
+    >
+    <p-button
+      type="button"
+      severity="secondary"
+      size="small"
+      (click)="limparFiltro()"
+      >Limpar</p-button
+    >
   </div>
 </div>

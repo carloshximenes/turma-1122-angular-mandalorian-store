@@ -4,6 +4,7 @@ import { HomeService } from './home.service';
 import { EquipmentFilterType } from 'src/app/types/equipment-filter.type';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,15 +15,33 @@ export class HomeComponent {
 
   constructor(
     private _equipmentService: EquipmentService,
-    private _router: Router
+    private _router: Router,
+    private _authService: AuthService
   ) {
-    this.filtrarEquipamentosPorNome();
+    this.verificarSeUsuarioEstaLogado();
+  }
+
+  public verificarSeUsuarioEstaLogado(): void {
+    const usuarioLogado = this._authService.usuarioEstaAutenticado();
+    if (usuarioLogado) {
+      this.filtrarEquipamentosPorNome();
+    } else {
+      this._router.navigate(['login']);
+    }
   }
 
   public filtrarEquipamentosPorNome(filtro?: EquipmentFilterType) {
     this._equipmentService.getListaEquipamento(filtro).subscribe({
       next: (resp) => {
-        this.listaEquipamentos = resp;
+        let listaFavoritos: string[] = [];
+        const favoritosString = localStorage.getItem('favoritos');
+        if (favoritosString) {
+          listaFavoritos = JSON.parse(favoritosString);
+        }
+        this.listaEquipamentos = resp.map((item) => {
+          item.isFavorite = !!listaFavoritos.find((fav) => fav === item.id);
+          return item;
+        });
         console.log('next');
       },
       error: (err) => {

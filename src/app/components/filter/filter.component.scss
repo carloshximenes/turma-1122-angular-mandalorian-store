@@ -1,0 +1,26 @@
+::ng-deep .Filter {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+  &__equipment {
+    flex: 1 100%;
+  }
+  &__isAvailable,
+  &__sortOrder {
+    flex: 0 calc(30% - 2px);
+    .p-dropdown {
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+}

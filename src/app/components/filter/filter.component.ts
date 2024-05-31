@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { availableOptionsConstants } from 'src/app/constants/available-options.constants';
+import { sortOptionsConstants } from 'src/app/constants/sort-options.constants';
 import { EquipmentFilterType } from 'src/app/types/equipment-filter.type';
 
 @Component({
@@ -8,8 +10,11 @@ import { EquipmentFilterType } from 'src/app/types/equipment-filter.type';
 })
 export class FilterComponent {
   public filtro: string = '';
-  public sortOrder: string = 'DESC';
+  public sortOrder: string = '';
   public isAvailable: string = '';
+
+  public availableOptions = availableOptionsConstants;
+  public sortOptions = sortOptionsConstants;
 
   @Output() filtroEmitter: EventEmitter<EquipmentFilterType> =
     new EventEmitter<EquipmentFilterType>();
@@ -18,6 +23,7 @@ export class FilterComponent {
     const filtroEquipamento: EquipmentFilterType = {
       search: this.filtro,
       sort: this.sortOrder,
+      orderBy: 'name',
     };
 
     if (this.isAvailable.trim().length > 0) {

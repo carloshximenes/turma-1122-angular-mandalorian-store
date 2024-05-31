@@ -1,0 +1,17 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 300px;
+    small {
+      font-style: italic;
+      color: rgb(184, 182, 182);
+      font-size: 12px;
+    }
+  }
+}
